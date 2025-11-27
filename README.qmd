@@ -1,6 +1,8 @@
 ---
 title: "tcdsb"
-format: html
+format: 
+  html: default  # Web version
+  gfm: default   # GitHub-Flavored Markdown
 execute:
   echo: false
   warning: false
