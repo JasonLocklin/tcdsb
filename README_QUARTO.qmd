@@ -18,7 +18,7 @@ execute:
 [![R-CMD-check](https://github.com/grousell/tcdsb/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/grousell/tcdsb/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of `tcdsb` is to provide report templates and ggplot themes that align with the visual identity of the Toronto Catholic District School Board. 
+The goal of `tcdsb` is to provide report templates and ggplot themes that align with the visual identity of the Toronto Catholic District School Board (TCDSB). 
 
 ## Installation
 
@@ -90,7 +90,11 @@ mtcars |>
 
 Custom colours can be added to the chart using `tcdsb_board_color`. 
 
-```{r themed_plot2,echo=TRUE, warning=FALSE}
+```{r}
+#| label: themed_plot2
+#| echo: true
+#| message: false
+#| warning: false
 
 mtcars |> 
   head(3) |> 
