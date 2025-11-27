@@ -1,0 +1,21 @@
+project:
+  type: website
+  output-dir: _site   # Quarto renders site here
+
+website:
+  title: "TCDSB"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: README_QUARTO.qmd
+        text: README
+      - href: vignettes/tcdsb.html
+        text: vignette
+      - href: templates/tcdsb_report_template.html
+        text: template
+
+format:
+  html:
+    theme: default       # or "default", "cosmo" "flatly", etc.
+    toc: true

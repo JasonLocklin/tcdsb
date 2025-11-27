@@ -37,7 +37,9 @@ Here is a basic plot:
 #| label: basic_plot
 #| echo: true
 
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(tibble)
 library(tcdsb)
 
 mtcars |> 
@@ -68,6 +70,8 @@ By adding `tcdsb_ggplot_theme` at the end of the code to build the plot, a consi
 ```{r}
 #| label: themed_plot
 #| echo: true
+#| message: false
+#| warning: false
 
 
 tcdsb_colours_fonts

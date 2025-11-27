@@ -11,7 +11,7 @@ library(officer)
 
 ```{r, echo=FALSE}
 # Insert title page
-block_pour_docx("assets/title_page.docx")
+#block_pour_docx("assets/title_page.docx")
 
 ```
 

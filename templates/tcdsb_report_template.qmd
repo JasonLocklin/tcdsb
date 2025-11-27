@@ -18,7 +18,6 @@ format:
     fig-dpi: 300
   html: 
     shift-heading-level-by: 1
-    minimal: true
 shortcodes:
   - colbreak.lua
 # filters:
