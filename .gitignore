@@ -166,3 +166,6 @@ config.yml
 #   !data/example_small.csv
 #   !docs/index.html
 ###############################################################################
+!assets/*.png
+!images/*
+!man/figures/*

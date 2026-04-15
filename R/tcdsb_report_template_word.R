@@ -1,49 +1,21 @@
-
-#' Report Template - Word
-#' A function that downloads an .Rmd template, .R script and Word templates for a TCDSB themed report template.
-#' @param report_name
-#' Name of the report to be created.
-#' @return
-#' Templates and scripts to create the report
-#' @export
+#' Create a Word Report from the TCDSB Template
 #'
-#' @examples
-#' #tcdsb_report_template_word("test_report")
-
-tcdsb_report_template_word <- function(report_name){
-  report_name <- deparse(substitute(report_name)) #makes names a character string
-
-  if(file.exists("assets")){
-  } else{
-    dir.create("assets")
-  }
-
-  if(file.exists("R")){
-  } else{
-    dir.create("R")
-  }
-
-  # Download .R file to create the title page ----
-  download.file("https://raw.githubusercontent.com/grousell/tcdsb/refs/heads/master/templates/01_create_word_coverpage.R",
-                destfile = "R/01_create_word_coverpage.R"
+#' Copy the example Word report template into the current project,
+#' optionally renaming it. Existing files are overwritten.
+#'
+#' @param name Optional file name (without extension). Defaults to "report".
+#' @export
+tcdsb_report_template_word <- function(name = "_example_report_word") {
+  src <- system.file(
+    "quarto/tcdsb_project/_example_report_word.qmd",
+    package = "tcdsb",
+    mustWork = TRUE
   )
 
-  # Download cover page template ----
-  download.file("https://github.com/grousell/tcdsb/raw/refs/heads/master/templates/tcdsb_word_cover_page_template.docx",
-                destfile = "assets/tcdsb_word_cover_page_template.docx",
-                mode = "wb"
-  )
+  dest <- paste0(name, ".qmd")
 
-  # Download report template ----
-  download.file("https://github.com/grousell/tcdsb/raw/refs/heads/master/templates/tcdsb_word_template.docx",
-                destfile = "assets/tcdsb_word_template.docx",
-                mode = "wb"
-  )
+  fs::file_copy(src, dest, overwrite = TRUE)
 
-  # Download .rmd ----
-  download.file("https://raw.githubusercontent.com/grousell/tcdsb/refs/heads/master/templates/tcdsb_report_template_word.Rmd",
-                destfile = glue::glue("{report_name}.rmd")
-  )
+  message("created ", dest)
+  invisible(dest)
 }
-
-
