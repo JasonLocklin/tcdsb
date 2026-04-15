@@ -16,3 +16,10 @@ contributes:
       logo: assets/r_a_logo.png
       title-slide-attributes:
         data-background-image: assets/title_slide_background.png
+
+
+    typst:
+      keep-typ: true
+      template-partials:
+        - pdf/typst-template.typ
+        - pdf/typst-show.typ
