@@ -1,55 +1,21 @@
-#' Report Template - PDF
-#' A function that downloads an .Rmd template, images and .tex files for a TCDSB themed report template.
-#' @param report_name
-#' Name of the report to be created.
-#' @return Templates and images for a TCDSB themed report
-#' @export
+#' Create a PDF Report from the TCDSB Template
 #'
-#' @examples
-#' # tcdsb_report_template_pdf(test_report)
-
-tcdsb_report_template_pdf <- function(report_name){
-
-  report_name <- deparse(substitute(report_name)) #makes names a character string
-
-  # Download .rmd file ----
-  download.file("https://raw.githubusercontent.com/grousell/tcdsb/master/templates/tcdsb_report_template.Rmd",
-                destfile = glue::glue("{report_name}.rmd")
+#' Copy the example PDF report template into the current project,
+#' optionally renaming it. Existing files are overwritten.
+#'
+#' @param name Optional file name (without extension). Defaults to "report".
+#' @export
+tcdsb_report_template_pdf <- function(name = "_example_report_pdf") {
+  src <- system.file(
+    "quarto/tcdsb_project/_example_report_pdf.qmd",
+    package = "tcdsb",
+    mustWork = TRUE
   )
 
-  # Download .tex template ----
+  dest <- paste0(name, ".qmd")
 
-  download.file("https://raw.githubusercontent.com/grousell/tcdsb/master/templates/in-header.tex",
-                destfile = glue::glue("in-header.tex")
-  )
+  fs::file_copy(src, dest, overwrite = TRUE)
 
-  # Create images file if needed ----
-  if (file.exists("assets")){
-
-  } else {
-    dir.create("assets")
-  }
-
-  # Download TCDSB images ----
-
-  download.file("https://github.com/grousell/tcdsb/blob/master/images/r_a_footer.png?raw=true",
-                destfile = "assets/r_a_footer.png",
-                mode = "wb")
-
-  download.file("https://github.com/grousell/tcdsb/blob/master/images/r_a_logo.png?raw=true",
-                destfile = "assets/r_a_logo.png",
-                mode = "wb")
-
-  download.file("https://github.com/grousell/tcdsb/blob/master/images/tcdsb_logo.png?raw=true",
-                destfile = "assets/tcdsb_logo.png",
-                mode = "wb")
-
-  download.file("https://github.com/grousell/tcdsb/blob/master/images/tcdsb_logo_BW.png?raw=true",
-                destfile = "assets/tcdsb_logo_BW.png",
-                mode = "wb")
-
-  download.file("https://github.com/grousell/tcdsb/blob/master/images/title_page_background.png?raw=true",
-                destfile = "assets/title_page_background.png",
-                mode = "wb")
-  }
-
+  message("created ", dest)
+  invisible(dest)
+}
