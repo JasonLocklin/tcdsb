@@ -1,0 +1,66 @@
+---
+title: "Title"
+subtitle: "Subtitle"
+format: tcdsb-revealjs
+dev: ragg_png
+params:
+  param1: "Parameter 1"
+---
+
+```{r setup}
+#| include: false
+#| message: false
+#| warning: false
+
+source("R/00_Setup.R")
+```
+
+
+
+## Slide 1 
+
+Here is the first slide
+
+-   Bullet 1\
+-   Bullet 2\
+-   Bullet 3\
+-   Bullet 4\
+-   Bullet 5\
+
+## Slide 2
+### Multiple Columns
+
+:::: {.columns}
+
+::: {.column width="40%"}
+Here is some text to describe the chart on the right
+:::
+
+::: {.column width="60%"}
+
+```{r fig.height=8}
+mtcars |> 
+  dplyr::group_by(cyl) |> 
+  dplyr::summarise(hp = mean(hp)) |> 
+  ggplot2::ggplot(ggplot2::aes(x = factor(cyl), y = hp)) +
+  ggplot2::geom_col(fill = theme$tcdsb_board_color) + 
+  ggplot2::geom_text(ggplot2::aes(label = round(hp,1)),
+                     vjust = -1, 
+                     size = 8) + 
+  ggplot2::scale_y_continuous(limits = c(0, 250)) + 
+  ggplot2::labs(x = "Cylinders", y = "Horsepower") + 
+  tcdsb::tcdsb_ggplot_theme(text_scale = 1.5)
+```
+
+:::
+
+::::
+
+## Slide 3
+### Inserting Images
+
+::: {.no-stretch} 
+<!--  Need 'no-stetch' div or else image will fill the entire slide -->
+![](assets/r_a_logo.png){width=350px fig-align="center"}
+:::
+

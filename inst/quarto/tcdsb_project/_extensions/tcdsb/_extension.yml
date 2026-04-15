@@ -1,0 +1,18 @@
+title: TCDSB Formats
+version: 1.0.0
+quarto-required: ">=1.6.0"
+
+contributes:
+  formats:
+    revealjs:
+      embed-resources: true
+      fig-format: svg
+      transition: fade
+      code-fold: true
+      theme: default
+      css:
+        - revealjs/styles/tcdsb_revealjs.scss
+        - revealjs/styles/tcdsb_extras.css
+      logo: assets/r_a_logo.png
+      title-slide-attributes:
+        data-background-image: assets/title_slide_background.png

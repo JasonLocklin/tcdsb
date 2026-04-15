@@ -1,0 +1,22 @@
+/*-- scss:defaults --*/
+
+/* Let the brand control identity */
+$font-family-sans: var(--quarto-font-base);
+$presentation-heading-color: var(--quarto-color-primary);
+$presentation-h3-color: var(--quarto-color-secondary);
+
+/* Slide titles (h2 only) */
+.reveal .slides h2 {
+  font-weight: 700;
+  font-size: 2em;
+  color: var(--quarto-color-primary);
+  text-align: left;
+}
+
+/* Level-3 headings */
+.reveal .slides h3 {
+  color: var(--quarto-color-secondary);
+  font-weight: 350;
+  font-size: 1.2em;
+  text-align: left;
+}

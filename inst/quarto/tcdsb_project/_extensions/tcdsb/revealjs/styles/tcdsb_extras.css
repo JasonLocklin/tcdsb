@@ -1,0 +1,27 @@
+
+
+/* Hide logo + footer on title slide */
+.reveal .title-slide .slide-footer,
+.reveal .title-slide .slide-logo {
+  display: none !important;
+}
+
+
+.reveal .my-callout {
+  background: var(--quarto-color-info);
+  border-left: 16px solid var(--quarto-color-secondary);
+  padding: 0.75rem 1rem;
+  border-radius: 16px;
+}
+
+/* Hide slide number on title slide */
+.reveal .slide-number > a[href*='title-slide'] {
+  display: none;
+}
+
+.v-center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
