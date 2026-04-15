@@ -1,0 +1,62 @@
+# TCDSB Research & Analytics Branding for Quarto Documents
+#
+#
+# Docs for _brand.yml
+# https://quarto.org/docs/authoring/brand.html#overview
+color:
+  palette:
+    # Primary brand colors
+    maroon: "#951B1E"              # theme$tcdsb_board_color
+    maroon_dark: "#560F11"         # theme$$tcdsb_palette[1]
+    maroon_medium: "#BA7D6B"       # theme$$tcdsb_palette[3]
+
+    # Accent colors
+    blue_light: "#8EB8C2"          # theme$$tcdsb_palette[5]
+    blue_bright: "#6BCAD4"         # theme$$tcdsb_palette[6]
+    teal: "#016567"                # theme$$tcdsb_palette[7]
+
+    # Supporting colors
+    tan_warm: "#FFE3A6"            # theme$$tcdsb_palette[4]
+    green_sage: "#7DA387"          # theme$$tcdsb_palette[8]
+    green_light: "#8ACA88"         # theme$$tcdsb_palette[9]
+    gold_muted: "#9D976E"          # theme$$tcdsb_palette[10]
+    purple_deep: "#2D0026"         # theme$$tcdsb_palette[2]
+
+    # Utility / special use
+    maroon_deep: "#C84E51"         # theme$$tcdsb_board_color_20
+    green_province: "#39B54A"      # theme$$province_green
+
+    # Text
+    white: "#FFFFFF"
+    charcoal_black: "#151515"
+    grey: "#C2C2C4"
+
+  # Core UI tokens
+  background: white
+  foreground: charcoal_black
+
+  primary: maroon
+  secondary: maroon_dark
+  tertiary: grey
+
+  success: green_light
+  info: tan_warm
+  warning: gold_muted
+  danger: purple_deep
+
+  light: white
+  dark: charcoal_black
+
+logo:
+  medium: assets/tcdsb_logo_maroon.png
+  small: assets/r_a_logo.png
+
+typography:
+  fonts:
+    - family: Century Gothic
+      source: system
+  base: Century Gothic
+  headings: Century Gothic
+
+
+
