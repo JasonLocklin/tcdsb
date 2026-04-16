@@ -1,101 +1,123 @@
 // typst-template.typ
 //
-// TCDSB Typst PDF template
-// ------------------------
-// Rendering mechanics only.
-// Identity comes from _brand.yml and metadata wiring in typst-show.typ.
+// Defines the tcdsb() document template function.
+// No brand-color references here — this file is processed BEFORE Quarto
+// injects brand-color from _brand.yml.
+//
+// The font parameter has no default; it MUST be supplied by typst-show.typ
+// (via the mainfont Quarto variable set in _quarto.yml from _brand.yml).
+// This prevents silent fallback to a non-brand font.
+//
+// Pandoc metadata is wired to _tcdsb-* globals for use in typst-show.typ.
+
+// --- Pandoc metadata wiring -----------------------------------------
+
+$if(title)$
+#let _tcdsb-title = [$title$]
+$else$
+#let _tcdsb-title = []
+$endif$
+
+$if(subtitle)$
+#let _tcdsb-subtitle = [$subtitle$]
+$else$
+#let _tcdsb-subtitle = []
+$endif$
+
+$if(dept)$
+#let _tcdsb-dept = "$dept$"
+$else$
+#let _tcdsb-dept = ""
+$endif$
+
+$if(date)$
+#let _tcdsb-date = "$date$"
+$else$
+#let _tcdsb-date = ""
+$endif$
+
+$if(author)$
+#let _tcdsb-author = "$author$"
+$else$
+#let _tcdsb-author = ""
+$endif$
+
+
+// --- Document template function -------------------------------------
+// Colour parameters are filled from brand-color in typst-show.typ.
 
 #let tcdsb(
-  title: none,
-  subtitle: none,
-  dept: none,
-  author: none,
-  date: none,
-  header_content: none,
   margin: (x: 1in, y: 1in),
   paper: "us-letter",
   lang: "en",
   region: "US",
+  font: (),
+  fontsize: 11pt,
+  color-primary: rgb("#951B1E"),
+  color-secondary: rgb("#2D0026"),
+  color-accent: rgb("#BA7D6B"),
+  color-link: rgb("#6BCAD4"),
   doc,
 ) = {
 
+  // Page layout — clear Quarto's brand-injected logo background,
+  // set running header and branded footer.
   set page(
     paper: paper,
     margin: margin,
     numbering: none,
-    header: align(right)[ header_content ]
+    background: none,
+    header: align(right)[
+      #set text(size: 10pt, weight: "light", fill: color-primary)
+      #_tcdsb-title
+    ],
+    footer: grid(
+      columns: (33.33%, 33.33%, 33.33%),
+      rows: (auto, 60pt),
+      gutter: 3pt,
+      align: (left, center + horizon, right + horizon),
+      [],
+      text(weight: "light", size: 12pt, fill: color-primary)[Research & Analytics],
+      context counter(page).display("1/1", both: true),
+    ),
   )
 
-  set text(lang: lang, region: region)
+  // Text properties
+  set text(
+    lang: lang,
+    region: region,
+    font: font,
+    size: fontsize,
+    fill: black,
+  )
 
   set par(leading: 0.8em)
 
   set table(
     align: left,
     inset: 7pt,
-    stroke: (x: none, y: 0.5pt)
+    stroke: (x: none, y: 0.5pt),
   )
 
+  // Heading styles using colour parameters
+  show heading.where(level: 1): it => block(width: 100%, below: 1em)[
+    #set align(center)
+    #set text(size: 20pt, weight: "regular", fill: color-primary)
+    #smallcaps(it.body)
+  ]
+
+  show heading.where(level: 2): it => block(below: 1em)[
+    #text(size: 16pt, weight: "bold", fill: color-secondary, upper(it.body))
+  ]
+
+  show heading.where(level: 3): it => block(below: 1em)[
+    #text(size: 14pt, weight: "bold", style: "italic", fill: color-accent, upper(it.body))
+  ]
+
+  // Link styles
   show link: underline
   show link: set underline(stroke: 1pt, offset: 2pt)
+  show link: set text(fill: color-link)
 
   doc
-}
-
-
-// --- TCDSB title page -----------------------------------------------
-
-#let tcdsb-title-page(
-  title,
-  subtitle,
-  dept,
-  author,
-  date,
-) = {
-  page(
-    margin: 0in,
-    header: none,
-    footer: none,
-    background: image(
-      "assets/title_page_background.png",
-      height: 35%,
-      fit: "cover"
-    )
-  )[
-    #place(right, dy: 60pt, dx: -60pt)[
-      image("assets/tcdsb_logo_maroon.png", height: 95%)
-    ]
-
-    #place(left + horizon, dy: -2in, dx: 1.25in)[
-      text(size: 30pt, weight: "light", title)
-    ]
-
-    #place(left + horizon, dy: -1.5in, dx: 1.25in)[
-      text(size: 26pt, weight: "light", subtitle)
-    ]
-
-    #place(left + horizon, dy: -1in, dx: 1.25in)[
-      text(size: 24pt, weight: "light", dept)
-    ]
-
-    #place(left + horizon, dy: 1in, dx: 1.25in)[
-      text(size: 24pt, weight: "light", date)
-    ]
-
-    #place(left + horizon, dy: 1.75in, dx: 1.25in)[
-      text(size: 20pt, weight: "light", author)
-    ]
-  ]
-}
-
-
-// --- TCDSB contents page --------------------------------------------
-
-#let tcdsb-contents-page() = {
-  page(
-    header: none,
-    footer: none
-  )[
-    outline(indent: 1.5em)
-  ]
 }

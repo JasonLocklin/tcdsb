@@ -1,8 +1,10 @@
 # TCDSB Research & Analytics Branding for Quarto Documents
 #
+# This file is loaded automatically via the tcdsb_brand extension.
+# To customize branding for a specific project, copy this file to
+# the project root as _brand.yml and edit it there.
 #
-# Docs for _brand.yml
-# https://quarto.org/docs/authoring/brand.html#overview
+# Docs: https://quarto.org/docs/authoring/brand.html#overview
 color:
   palette:
     # Primary brand colors
@@ -48,15 +50,14 @@ color:
   dark: charcoal_black
 
 logo:
-  medium: assets/tcdsb_logo_maroon.png
+  large: assets/tcdsb_logo_maroon.png
   small: assets/r_a_logo.png
 
 typography:
   fonts:
     - family: Century Gothic
       source: system
-  base: Century Gothic
-  headings: Century Gothic
-
-
-
+  base:
+    family: Century Gothic
+  headings:
+    family: Century Gothic

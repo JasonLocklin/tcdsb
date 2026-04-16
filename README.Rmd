@@ -99,11 +99,18 @@ mtcars |>
 
 ```
 
-## Project Setup Example
+## Project Setup
 
-```{r project_setup,echo=TRUE, warning=FALSE}
+Run `tcdsb_project_setup()` in any new project directory to install the TCDSB
+Quarto custom format, brand extension (colors, logos, typography), and example
+documents.
 
-# tcdsb::tcdsb_project_setup()
-
+``` r
+tcdsb::tcdsb_project_setup()
 ```
- Creates a README file and folders for reference documents, R scripts, assets (i.e. image files), raw and clean data. 
+
+This creates an `_extensions/` folder with the `tcdsb` (PDF and RevealJS formats)
+and `tcdsb_brand` (brand colors, logos, fonts) extensions, along with example
+starter documents. Re-running `tcdsb_project_setup()` is safe: extensions are
+always refreshed, while files you have modified are left untouched unless you
+pass `destructive = TRUE`.

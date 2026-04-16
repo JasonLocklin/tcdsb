@@ -81,7 +81,9 @@ Here is a description of the chart. This shows the MPG vs Horsepower from the mt
 library(tidyverse)
 library(tcdsb)
 
-tcdsb_colours_fonts()
+theme <- tcdsb_colours_fonts()
+tcdsb_board_color <- theme$tcdsb_board_color
+tcdsb_palette <- theme$tcdsb_palette
 
 mtcars2 <- mtcars
 mtcars2$am <- factor(

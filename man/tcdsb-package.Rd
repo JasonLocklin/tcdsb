@@ -6,7 +6,7 @@
 \alias{tcdsb-package}
 \title{tcdsb: TCDSB - Visual Identity}
 \description{
-This packae is to support visual identity for Toronto Catholic District School Board.
+Provides visual identity tools for the Toronto Catholic District School Board, including ggplot2 themes, gt table styling, Quarto custom formats, and project setup utilities.
 }
 \seealso{
 Useful links:

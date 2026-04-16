@@ -2,22 +2,22 @@
 % Please edit documentation in R/tcdsb_report_template_quarto.R
 \name{tcdsb_report_template_quarto}
 \alias{tcdsb_report_template_quarto}
-\title{Report Template - Quarto PDF
-A function that downloads an .qmd template and associate .typ and .lua files for a TCDSB themed report template.}
+\title{Create a PDF Report from the TCDSB Template}
 \usage{
-tcdsb_report_template_quarto(report_name)
+tcdsb_report_template_quarto(name = "report")
 }
 \arguments{
-\item{report_name}{Name of the report to be created.}
+\item{name}{File name without extension. Defaults to "report".}
 }
 \value{
-Templates and scripts to create the report
+Invisibly returns the destination path.
 }
 \description{
-Report Template - Quarto PDF
-A function that downloads an .qmd template and associate .typ and .lua files for a TCDSB themed report template.
+Copy the example PDF report QMD into the current project, optionally
+renaming it. Existing files are overwritten.
 }
-\examples{
-#tcdsb_report_template_quarto("test_report")
-
+\details{
+This is a convenience wrapper around the example file included with the
+package. For a full project setup (extensions, branding, assets), use
+\code{\link[=tcdsb_project_setup]{tcdsb_project_setup()}} instead.
 }

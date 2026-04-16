@@ -2,21 +2,14 @@
 % Please edit documentation in R/tcdsb_report_template_pdf.R
 \name{tcdsb_report_template_pdf}
 \alias{tcdsb_report_template_pdf}
-\title{Report Template - PDF
-A function that downloads an .Rmd template, images and .tex files for a TCDSB themed report template.}
+\title{Create a PDF Report from the TCDSB Template}
 \usage{
-tcdsb_report_template_pdf(report_name)
+tcdsb_report_template_pdf(name = "_example_report_pdf")
 }
 \arguments{
-\item{report_name}{Name of the report to be created.}
-}
-\value{
-Templates and images for a TCDSB themed report
+\item{name}{File name without extension. Defaults to "_example_report_pdf".}
 }
 \description{
-Report Template - PDF
-A function that downloads an .Rmd template, images and .tex files for a TCDSB themed report template.
-}
-\examples{
-# tcdsb_report_template_pdf(test_report)
+Copy the example PDF report template into the current project,
+optionally renaming it. Existing files are overwritten.
 }

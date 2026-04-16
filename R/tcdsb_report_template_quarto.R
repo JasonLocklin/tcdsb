@@ -1,64 +1,26 @@
-#' Report Template - Quarto PDF
-#' A function that downloads an .qmd template and associate .typ and .lua files for a TCDSB themed report template.
-#' @param report_name
-#' Name of the report to be created.
-#' @return
-#' Templates and scripts to create the report
-#' @examples
-#' #tcdsb_report_template_quarto("test_report")
+#' Create a PDF Report from the TCDSB Template
 #'
+#' Copy the example PDF report QMD into the current project, optionally
+#' renaming it. Existing files are overwritten.
+#'
+#' This is a convenience wrapper around the example file included with the
+#' package. For a full project setup (extensions, branding, assets), use
+#' [tcdsb_project_setup()] instead.
+#'
+#' @param name File name without extension. Defaults to "report".
+#' @return Invisibly returns the destination path.
 #' @export
-
-tcdsb_report_template_quarto <- function(report_name){
-  report_name <- deparse(substitute(report_name)) #makes names a character string
-  # report_name <- "report_template"
-
-  if(file.exists("assets")){
-  } else{
-    dir.create("assets")
-  }
-
-  if(file.exists("R")){
-  } else{
-    dir.create("R")
-  }
-
-  # Download .qmd ----
-
-  download.file("https://raw.githubusercontent.com/grousell/tcdsb/master/templates/tcdsb_report_template.qmd",
-                destfile = glue::glue("{report_name}.qmd")
+tcdsb_report_template_quarto <- function(name = "report") {
+  src <- system.file(
+    "quarto/tcdsb_project/_example_pdf.qmd",
+    package = "tcdsb",
+    mustWork = TRUE
   )
 
-  # Download .typ files ----
-  download.file("https://raw.githubusercontent.com/grousell/tcdsb/refs/heads/master/templates/typst-show.typ",
-                destfile = "typst-show.typ"
-                )
+  dest <- paste0(name, ".qmd")
 
-  download.file("https://raw.githubusercontent.com/grousell/tcdsb/refs/heads/master/templates/typst-template.typ",
-                destfile = "typst-template.typ"
-  )
+  fs::file_copy(src, dest, overwrite = TRUE)
 
-  # Download .lua files ----
-  download.file("https://raw.githubusercontent.com/grousell/tcdsb/refs/heads/master/templates/colbreak.lua",
-                destfile = "colbreak.lua"
-  )
-
-
-  # Download TCDSB images ----
-  download.file("https://github.com/grousell/tcdsb/blob/master/images/title_page_background.png?raw=true",
-                destfile = "assets/title_page_background.png",
-                mode = "wb")
-
-  download.file("https://github.com/grousell/tcdsb/blob/master/images/tcdsb_logo_maroon.png?raw=true",
-                destfile = "assets/tcdsb_logo_maroon.png",
-                mode = "wb")
-
-  download.file("https://github.com/grousell/tcdsb/blob/master/images/r_a_logo.png?raw=true",
-                destfile = "assets/r_a_logo.png",
-                mode = "wb")
-
-  }
-
-tcdsb_report_template_quarto()
-
-
+  message("created ", dest)
+  invisible(dest)
+}

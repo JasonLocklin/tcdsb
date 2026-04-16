@@ -14,6 +14,7 @@
 
 
 tcdsb_colours_fonts <- function(...) {
+  check_package_version()
   list(
     tcdsb_board_color = "#951B1E",
     tcdsb_board_color_20 = "#C84E51",

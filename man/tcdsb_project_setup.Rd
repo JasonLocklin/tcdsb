@@ -2,18 +2,23 @@
 % Please edit documentation in R/tcdsb_project_setup.R
 \name{tcdsb_project_setup}
 \alias{tcdsb_project_setup}
-\title{TCDSB Project Setup
-A function that sets up a project folder. Creates a README file subfolders.}
+\title{TCDSB Project Setup / Update}
 \usage{
-tcdsb_project_setup()
+tcdsb_project_setup(destructive = FALSE)
 }
-\value{
-README file and subfolders
+\arguments{
+\item{destructive}{Logical; force overwrite of modified files.}
 }
 \description{
-TCDSB Project Setup
-A function that sets up a project folder. Creates a README file subfolders.
+Create a new TCDSB project or update an existing one.
 }
-\examples{
-# tcdsb_project_setup()
+\details{
+This function can safely be re-run:
+\itemize{
+\item _extensions/ and _brand.yml are always updated
+\item All other files are only updated if unchanged since last run
+\item Modified or deleted files are skipped unless destructive = TRUE
+}
+
+Tool state and checksums are stored in _tcdsb.yml.
 }

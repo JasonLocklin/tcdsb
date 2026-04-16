@@ -11,11 +11,10 @@ contributes:
       code-fold: true
       theme: default
       css:
-        - revealjs/styles/tcdsb_revealjs.scss
-        - revealjs/styles/tcdsb_extras.css
-      logo: assets/r_a_logo.png
+        - revealjs/tcdsb_revealjs.scss
+        - revealjs/tcdsb_extras.css
       title-slide-attributes:
-        data-background-image: assets/title_slide_background.png
+        data-background-image: revealjs/title_slide_background.png
 
 
     typst:

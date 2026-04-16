@@ -3,26 +3,30 @@ Title: TCDSB - Visual Identity
 Version: 0.0.0.9000
 Authors@R: 
     person("Rousell", "Greg", , "grousell@gmail.com", role = c("aut", "cre"))
-Description: This packae is to support visual identity for Toronto Catholic District School Board.
+Description: Provides visual identity tools for the Toronto Catholic District School Board,
+    including ggplot2 themes, gt table styling, Quarto custom formats, and project
+    setup utilities.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-Imports: 
+Imports:
+    colorspace,
+    data.table,
     dplyr,
+    fs,
     ggplot2,
     glue,
+    gt,
     httr2,
     jsonlite,
-    stringr,
-    tidyr,
-    utils,
-    usethis,
-    colorspace,
     scales,
     stats,
-    gt,
-    data.table
+    stringr,
+    tidyr,
+    tools,
+    utils,
+    yaml
 Suggests: 
     knitr,
     patchwork,

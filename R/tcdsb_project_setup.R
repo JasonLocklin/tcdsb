@@ -14,6 +14,8 @@
 #'
 
 tcdsb_project_setup <- function(destructive = FALSE) {
+  check_package_version()
+  check_project_version()
   path <- "."
 
   src <- system.file(
@@ -69,8 +71,10 @@ tcdsb_project_setup <- function(destructive = FALSE) {
 
   # ------------------------------------------------------------------
   # Force-updated infrastructure
+  # Branding (_brand.yml) is now inside _extensions/tcdsb_brand/
+  # and is updated as part of _extensions.
   # ------------------------------------------------------------------
-  force_overwrite <- c("_extensions", "_brand.yml")
+  force_overwrite <- c("_extensions")
 
   for (item in force_overwrite) {
     from <- fs::path(src, item)

@@ -2,19 +2,15 @@
 % Please edit documentation in R/tcdsb_presentation_template_quarto.R
 \name{tcdsb_presentation_template_quarto}
 \alias{tcdsb_presentation_template_quarto}
-\title{Presentation Template - RevealJS}
+\title{Create a RevealJS Presentation from the TCDSB Template}
 \usage{
-tcdsb_presentation_template_quarto(presentation_name)
+tcdsb_presentation_template_quarto(name = "_example_presentation")
 }
 \arguments{
-\item{presentation_name}{File name}
-}
-\value{
-Template to produce RevealJS presentation
+\item{name}{Optional file name (without extension). Defaults to
+"presentation".}
 }
 \description{
-Presentation Template - RevealJS
-}
-\examples{
-# tcdsb_report_template_quarto(new_presentation)
+Copy the example RevealJS presentation into the current project,
+optionally renaming it. Existing files are overwritten.
 }

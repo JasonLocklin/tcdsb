@@ -155,10 +155,6 @@ gtcars |>
   )
 ```
 
-```{=typst}
-#show figure: set block(breakable: true)
-```
-
 ```{r}
 gtcars |>
   select(1:5) |>
