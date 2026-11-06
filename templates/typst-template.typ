@@ -18,6 +18,7 @@
   season: [],
   date: [],
   dept:[],
+  author: [], 
 ) = [
   #set page(
    footer: none,
@@ -96,23 +97,26 @@
   #place(
     bottom + left,
     dx: 0in,
-    dy: -0.6in,
+    dy: -0.75in,
     )[
     #text(size: 14pt, fill: tcdsb_colors.board_maroon,)[#dept]
     ]
 
-  #place(
-    bottom + left,
-    dx: 0in,
-    dy: -0.4in,
-    )[
-    #text(size: 14pt, fill: tcdsb_colors.board_maroon,)[#author]
-    ]
+
+  #if author != none and author != [] [
+    #place(
+      bottom + left,
+      dx: 0in,
+      dy: -0.5in,
+      )[
+      #text(size: 14pt)[Produced by #author]
+      ]
+  ]
 
   #place(
     bottom + left,
     dx: 0in,
-    dy: -0.2in,
+    dy: -0.25in,
     )[
     #text(size: 14pt)[#date]
     ]
@@ -195,6 +199,7 @@
       season: season,
       date: date,
       dept: dept,
+      author: author,
     )
   }
 
